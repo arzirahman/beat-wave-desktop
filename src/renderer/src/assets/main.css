@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'Dancing Script';
+        src: url(../fonts/dancing-script.ttf) format('woff2');
+    }
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+}
+  
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+.thumb::-webkit-slider-thumb {
+    width: 12px;
+    height: 12px;
+    --tw-bg-opacity: 1;
+    background-color: transparent;
+    border: 0;
+    transition: all;
+    transition-duration: 300ms;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.thumb::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    --tw-bg-opacity: 1;
+    background-color: transparent;
+    border: 0;
+    transition: all;
+    transition-duration: 300ms;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.thumb::-moz-range-thumb:hover {
+    background-color: hsl(var(--pf) / var(--tw-bg-opacity));
+}
+
+.thumb::-webkit-slider-thumb:hover {
+    background-color: hsl(var(--pf) / var(--tw-bg-opacity));
+}
+
+.table :where(.table-pin-rows thead tr) {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+    --tw-bg-opacity: 1;
+    background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
+}
+.table :where(.table-pin-rows tfoot tr) {
+    position: sticky;
+    bottom: 0px;
+    z-index: 1;
+    --tw-bg-opacity: 1;
+    background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
+}
