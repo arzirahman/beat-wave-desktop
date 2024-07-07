@@ -22,7 +22,7 @@ export default function Sidebar(){
                             type='button' 
                             onClick={() => { dispatch(setMenu(item.label as string)) }} 
                             key={item.id} 
-                            className="relative justify-start w-full gap-4 px-6 rounded-none btn btn-ghost"
+                            className="relative justify-start w-full gap-4 px-6 transition-all duration-300 rounded-none btn btn-ghost"
                         >
                             <span className={`${isActive ? 'text-primary' : ''}`}>{item.icon}</span>
                             <span>{item.label}</span>

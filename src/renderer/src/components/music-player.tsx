@@ -11,7 +11,7 @@ import logo from '../assets/icon.ico'
 import { AppDispatch, RootState } from '@renderer/redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { nextMusic, prevMusic, setRestart, startLoading, startMusic, stopLoading, stopMusic } from '@renderer/redux/general-slice';
-import { convertToSeconds, formatDuration } from '@renderer/utils/formatter';
+import { convertToSeconds } from '@renderer/utils/formatter';
 import Image from './image';
 
 export default function MusicPlayer(){
@@ -232,7 +232,7 @@ export default function MusicPlayer(){
                     </div>
                     <div className="flex flex-col gap-1">
                         <div>{selectedMusic?.name ?? 'Music not selected'}</div>
-                        <div className="text-sm text-primary">{
+                        <div className="text-sm text-accent">{
                             selectedMusic?.artistMusic?.map((item) => item.artist.name)?.join(", ") ?? 'Music not selected'
                         }</div>
                     </div>
@@ -245,11 +245,6 @@ export default function MusicPlayer(){
                     }</button>
                     <button onClick={next} className="px-3 rounded-full btn btn-ghost"><TbPlayerSkipForwardFilled size={20} /></button>
                     </div>
-                    {/* <div className='flex gap-2 items-center w-full md:min-w-[20rem] max-w-[28rem]'>
-                        <div className='text-sm'>{formatDuration(progress)}</div>
-                        <Slider min={0} max={maxProgress} step={1} value={progress} onChange={handleProgressChange} />
-                        <div className='text-sm'>{formatDuration(maxProgress)}</div>
-                    </div> */}
                 </div>
                 <div className="flex items-center justify-end flex-1">
                     <div className="flex items-center w-32 gap-2">

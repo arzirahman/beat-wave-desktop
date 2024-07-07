@@ -3,6 +3,7 @@ import { request } from "@renderer/utils/axios";
 import { useEffect, useRef, useState } from "react";
 import SingerDetail from "./singer-detail";
 import { PiMicrophoneStageFill } from "react-icons/pi";
+import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
 export type IArtist = {
     id: string;
@@ -73,7 +74,7 @@ export default function Singer(){
                     </div>
                 </div>
                 <div className="w-[25rem] join px-4">
-                    <input value={search} onChange={(e) => { setSearch(e.target.value) }} type="text" placeholder="Search…" className="w-full input join-item" />
+                    <input value={search} onChange={(e) => { setPage(1); setSearch(e.target.value) }} type="text" placeholder="Search…" className="w-full input join-item" />
                     <button type='submit' className="btn btn-ghost bg-base-100 join-item">
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                     </button>
@@ -87,9 +88,13 @@ export default function Singer(){
                 </div>
                 <div className="flex justify-end px-12 pb-3">
                     <div className="join">
-                        <button onClick={prevPage} className="join-item btn">«</button>
-                        <button className="join-item btn">Page {page}</button>
-                        <button onClick={nextPage} className="join-item btn">»</button>
+                        <button onClick={prevPage} className={`${page === 1 ? 'btn-disabled' : ''} border-0 join-item btn btn-ghost bg-base-200 text-primary`}>
+                            <FaCaretLeft size={20} />
+                        </button>
+                        <button className="border-0 join-item btn hover:bg-base-200 text-base-content bg-base-200">Page {page}</button>
+                        <button onClick={nextPage} className={`${page === totalPages ? 'btn-disabled' : ''} border-0 join-item btn btn-ghost bg-base-200 text-primary`}>
+                            <FaCaretRight size={20} />
+                        </button>
                     </div>
                 </div>
             </div>
