@@ -1,7 +1,7 @@
 import { Table } from "@renderer/components/table";
 import { FiClock } from "react-icons/fi";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import logo from '../../../../resources/icon.ico';
+import logo from '../assets/icon.ico';
 import { useEffect, useRef, useState } from "react";
 import { request } from "@renderer/utils/axios";
 import { IArtist } from "./singer";
@@ -77,8 +77,9 @@ export default function Music(){
                     <div className="relative w-10 h-10 min-w-[2.5rem] max-h-[2.5rem] rounded-md overflow-hidden flex items-center justify-center">
                         <Image 
                             alt="Beat Wave" 
-                            src={row.artistMusic[0].artist.image ? `http://203.194.114.17:4000${row.artistMusic[0].artist.image}` : logo} 
+                            src={row.artistMusic[0].artist.image ? `http://203.194.114.17:4000${row.artistMusic[0].artist.image}` : ''} 
                             className="absolute top-0 left-0 object-cover w-full h-full" 
+                            defaultSrc={logo}
                         />
                     </div>
                     <span>{row.name}</span>

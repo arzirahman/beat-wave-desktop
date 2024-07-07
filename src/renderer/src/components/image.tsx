@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
-import logo from '../../../../resources/icon.ico';
 import { request } from '@renderer/utils/axios';
 
 interface ImageProps {
     src: string;
     alt: string;
     className?: string;
+    defaultSrc: string;
 }
 
 const fetchAndCacheImage = async (url: string): Promise<string | null> => {
     try {
+        if (!url) return null;
+
         const cachedImage = localStorage.getItem(url);
         if (cachedImage) {
             return cachedImage;
@@ -31,8 +33,8 @@ const fetchAndCacheImage = async (url: string): Promise<string | null> => {
     }
 };
 
-const Image = ({ src, alt, className }: ImageProps) => {
-    const [imageSrc, setImageSrc] = useState<string>(logo);
+const Image = ({ src, alt, className, defaultSrc }: ImageProps) => {
+    const [imageSrc, setImageSrc] = useState<string>(defaultSrc);
 
     useEffect(() => {
         let isMounted = true;
@@ -41,6 +43,8 @@ const Image = ({ src, alt, className }: ImageProps) => {
             const cachedSrc = await fetchAndCacheImage(src);
             if (isMounted && cachedSrc) {
                 setImageSrc(cachedSrc);
+            } else {
+                setImageSrc(defaultSrc);
             }
         };
 

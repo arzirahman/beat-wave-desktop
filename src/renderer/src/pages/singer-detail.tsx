@@ -8,7 +8,7 @@ import { AppDispatch } from "@renderer/redux/store";
 import { setMusic, setMusicList, setSelectedMusicPlaylist } from "@renderer/redux/general-slice";
 import { IArtist } from "./singer";
 import Image from "@renderer/components/image";
-import logo from '../../../../resources/icon.ico';
+import logo from '../assets/icon.ico';
 import { useEffect, useRef, useState } from "react";
 import { request } from "@renderer/utils/axios";
 import { TbArrowBackUp } from "react-icons/tb";
@@ -39,8 +39,9 @@ export default function SingerDetail(
                     <div className="relative w-10 h-10 min-w-[2.5rem] max-h-[2.5rem] rounded-md overflow-hidden flex items-center justify-center">
                         <Image 
                             alt="Beat Wave" 
-                            src={artistDetail.image ? `http://203.194.114.17:4000${artistDetail.image}` : logo} 
+                            src={artistDetail.image ? `http://203.194.114.17:4000${artistDetail.image}` : ''} 
                             className="absolute top-0 left-0 object-cover w-full h-full" 
+                            defaultSrc={logo}
                         />
                     </div>
                     <span>{row.name}</span>

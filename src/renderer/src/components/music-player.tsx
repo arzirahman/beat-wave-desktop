@@ -7,7 +7,7 @@ import {
 } from 'react-icons/tb'
 import { Slider } from './slider'
 import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react'
-import logo from '../../../../resources/icon.ico'
+import logo from '../assets/icon.ico'
 import { AppDispatch, RootState } from '@renderer/redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { nextMusic, prevMusic, setRestart, startLoading, startMusic, stopLoading, stopMusic } from '@renderer/redux/general-slice';
@@ -222,8 +222,9 @@ export default function MusicPlayer(){
                     <div className="relative flex items-center justify-center overflow-hidden rounded-md w-14 h-14">
                         <Image 
                             alt="Beat Wave" 
-                            src={selectedMusic?.artistMusic[0].artist.image ? `http://203.194.114.17:4000${selectedMusic.artistMusic[0].artist.image}` : logo} 
+                            src={selectedMusic?.artistMusic[0].artist.image ? `http://203.194.114.17:4000${selectedMusic.artistMusic[0].artist.image}` : ''} 
                             className="absolute top-0 left-0 object-cover w-full h-full" 
+                            defaultSrc={logo}
                         />
                     </div>
                     <div className="flex flex-col gap-1">

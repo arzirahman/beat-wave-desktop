@@ -1,7 +1,6 @@
 import { Card } from "@renderer/components/card";
 import { request } from "@renderer/utils/axios";
 import { useEffect, useRef, useState } from "react";
-import artistImg from '../assets/no-artist.png';
 import SingerDetail from "./singer-detail";
 import { PiMicrophoneStageFill } from "react-icons/pi";
 
@@ -82,7 +81,7 @@ export default function Singer(){
                 <div className='grid flex-1 grid-cols-5 gap-4 px-4 overflow-y-auto'>
                     {artist.map((item) => {
                         return (
-                            <Card onClick={() => { setSelectedArtist(item) }} key={item.id} src={item.image ? `http://203.194.114.17:4000${item.image}` : artistImg} body={item.name} />
+                            <Card onClick={() => { setSelectedArtist(item) }} key={item.id} src={item.image ?? ''} body={item.name} />
                         )
                     })}
                 </div>
