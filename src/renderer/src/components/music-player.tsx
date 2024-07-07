@@ -214,9 +214,12 @@ export default function MusicPlayer(){
     };
 
     return (
-        <div className={`flex flex-col items-center gap-4 w-full h-24 py-2 px-4 overflow-x-auto bg-base-100`}>
+        <div className={`flex flex-col items-center gap-4 w-full h-24 overflow-x-auto bg-base-100`}>
             {loading && <progress className="fixed inset-0 w-full rounded-none progress progress-accent"></progress>}
-            <div className="flex items-center justify-between flex-1 w-full gap-2">
+            <div className="relative flex items-center justify-between flex-1 w-full gap-2 px-4 py-2">
+                <div className='absolute inset-0 w-full'>
+                    <Slider min={0} max={maxProgress} step={1} value={progress} onChange={handleProgressChange} />
+                </div>
                 <audio ref={audioRef} className="hidden" />
                 <div className="flex items-center flex-1 gap-2">
                     <div className="relative flex items-center justify-center overflow-hidden rounded-md w-14 h-14">
@@ -234,7 +237,7 @@ export default function MusicPlayer(){
                         }</div>
                     </div>
                 </div>
-                <div className="flex flex-col items-center flex-1 w-full gap-2">
+                <div className="z-10 flex flex-col items-center flex-1 w-full gap-2">
                     <div className="flex gap-2">
                     <button onClick={prev} className="px-3 rounded-full btn btn-ghost"><TbPlayerSkipBackFilled size={20} /></button>
                     <button ref={buttonPlayRef} onClick={togglePlay} className="px-3 rounded-full btn btn-primary">{
@@ -242,11 +245,11 @@ export default function MusicPlayer(){
                     }</button>
                     <button onClick={next} className="px-3 rounded-full btn btn-ghost"><TbPlayerSkipForwardFilled size={20} /></button>
                     </div>
-                    <div className='flex gap-2 items-center w-full md:min-w-[20rem] max-w-[28rem]'>
+                    {/* <div className='flex gap-2 items-center w-full md:min-w-[20rem] max-w-[28rem]'>
                         <div className='text-sm'>{formatDuration(progress)}</div>
                         <Slider min={0} max={maxProgress} step={1} value={progress} onChange={handleProgressChange} />
                         <div className='text-sm'>{formatDuration(maxProgress)}</div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="flex items-center justify-end flex-1">
                     <div className="flex items-center w-32 gap-2">

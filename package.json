@@ -21,9 +21,14 @@
     "build:linux": "electron-vite build && electron-builder --linux"
   },
   "build": {
+    "appId": "com.arzirahman.beatwave",
     "productName": "Beat Wave",
     "win": {
+      "target": "nsis",
       "icon": "resources/icon.ico"
+    },
+    "nsis": {
+      "artifactName": "${productName}-${version}.${ext}"
     }
   },
   "dependencies": {
